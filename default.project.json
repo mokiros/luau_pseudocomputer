@@ -1,0 +1,18 @@
+{
+	"name": "sb_luau_term",
+	"emitLegacyScripts": false,
+	"tree": {
+		"$className": "DataModel",
+		"Workspace": {
+			"darklua": {
+				"$className": "Folder",
+				"Server": {
+					"$path": "out/server.server.lua",
+					"Client": {
+						"$path": "out/client.client.lua"
+					}
+				}
+			}
+		}
+	}
+}

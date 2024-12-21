@@ -1,0 +1,48 @@
+{
+	"generator": "readable",
+	// "generator": {
+	// 	"name": "dense",
+	// 	"column_span": 240,
+	// },
+	"bundle": {
+		"modules_identifier": "__DARKLUA_BUNDLE_MODULES",
+		"excludes": [
+			"bit"
+		],
+		"require_mode": {
+			"name": "path",
+			"module_folder_name": "init",
+			"sources": {
+				"@luau_term": "./modules/luau_term/src",
+				"@util": "./src/util",
+				"@kernel": "./src/kernel",
+				"@fione": "./modules/fione",
+				"@yueliang": "./modules/yueliang/src",
+			},
+		},
+	},
+	"rules": [
+		"remove_comments",
+		"remove_spaces",
+		"compute_expression",
+		"remove_nil_declaration",
+		"remove_unused_if_branch",
+		"filter_after_early_return",
+		"remove_empty_do",
+		
+		/* Uncomment below to minify code */
+		// "convert_index_to_field",
+		// {
+		// 	"rule": "rename_variables",
+		// 	"include_functions": true,
+		// },
+
+		// strip luau features
+		"remove_types",
+		"remove_continue",
+		"remove_interpolated_string",
+		"remove_if_expression",
+		"remove_floor_division",
+		"remove_compound_assignment",
+	],
+}

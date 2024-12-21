@@ -1,0 +1,18 @@
+{
+	"languageMode": "strict",
+	"lint": {
+		"*": true
+	},
+	"lintErrors": false,
+	"typeErrors": true,
+	"globals": [
+		"warn"
+	],
+	"aliases": {
+		"luau_term": "./modules/luau_term/src",
+		"util": "./src/util",
+		"kernel": "./src/kernel",
+		"fione": "./modules/fione",
+		"yueliang": "./modules/yueliang/src"
+	}
+}

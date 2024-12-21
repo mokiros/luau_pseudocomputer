@@ -1,0 +1,9 @@
+[submodule "modules/fione"]
+	path = modules/fione
+	url = https://github.com/mokiros/FiOne
+[submodule "modules/luau_term"]
+	path = modules/luau_term
+	url = https://github.com/mokiros/luau_term
+[submodule "modules/yueliang"]
+	path = modules/yueliang
+	url = https://github.com/mokiros/yueliang
