@@ -2,6 +2,7 @@ local Terminal = require("@luau_term")
 local parseUnifont = require("@luau_term/unifont")
 local Types = require("./types")
 local ProcessRunner = require("./process")
+local Stream = require("@util/stream")
 
 local Kernel = {}
 
@@ -57,18 +58,30 @@ function Kernel.getAlternateFramebuffer(kernel: Types.Kernel)
 	return kernel.terminal.screens.alternate.canvas.canvas
 end
 
+function Kernel.inputByte(kernel: Types.Kernel, byte: number): boolean
+	local initProcess = ProcessRunner.getProcessById(kernel.processRunner, 1)
+
+	return Stream.writeu8(initProcess.stdin, byte)
+end
+
 function Kernel.init(kernel: Types.Kernel, init_bc: string)
 	local initId = ProcessRunner.spawnProcess(kernel.processRunner, init_bc, {})
 
 	assert(initId == 1, "Init program did not have ID of 1")
+end
 
-	local initProcess = ProcessRunner.getProcessById(kernel.processRunner, initId)
+function Kernel.runLoop(kernel: Types.Kernel): boolean
+	local initProcess = ProcessRunner.getProcessById(kernel.processRunner, 1)
 
-	initProcess.stdout.reader = function(buf: buffer)
-		Terminal.stdout(kernel.terminal, buf)
+	ProcessRunner.runProcess(kernel.processRunner, initProcess.id)
+
+	local byte = Stream.readu8(initProcess.stdout)
+	while byte do
+		Terminal.Parser.parse(kernel.terminal, byte)
+		byte = Stream.readu8(initProcess.stdout)
 	end
 
-	ProcessRunner.runProcess(kernel.processRunner, 1)
+	return initProcess.state == Types.ProcessState.Dead
 end
 
 return Kernel
