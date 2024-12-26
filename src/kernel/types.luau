@@ -1,5 +1,5 @@
 local Terminal = require("@luau_term")
-local Stream = require("@util/stream")
+local Stream = require("./util/stream")
 
 export type BaseProcessEnvironment = {
 	write: (buf: buffer, count: number, offset: number?) -> number,

@@ -1,6 +1,6 @@
 local getUnifont = Instance.new("RemoteFunction")
 getUnifont.Name = "GetFont"
-getUnifont.Parent = script.client
+getUnifont.Parent = script:FindFirstChild("Client")
 
 local cachedUnifont: string? = nil
 

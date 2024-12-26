@@ -14,8 +14,6 @@
 			"module_folder_name": "init",
 			"sources": {
 				"@luau_term": "./modules/luau_term/src",
-				"@util": "./src/util",
-				"@kernel": "./src/kernel",
 				"@fione": "./modules/fione",
 				"@yueliang": "./modules/yueliang/src",
 			},

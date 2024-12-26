@@ -2,7 +2,7 @@ local Terminal = require("@luau_term")
 local parseUnifont = require("@luau_term/unifont")
 local Types = require("./types")
 local ProcessRunner = require("./process")
-local Stream = require("@util/stream")
+local Stream = require("./util/stream")
 
 local Kernel = {}
 

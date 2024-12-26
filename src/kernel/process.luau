@@ -1,6 +1,6 @@
 local Types = require("./types")
 local FiOne = require("@fione/source")
-local Stream = require("@util/stream")
+local Stream = require("./util/stream")
 
 local GlobalProcessEnvironment = {
 	table = table,

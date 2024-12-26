@@ -1,6 +1,6 @@
-local Kernel = require("@kernel")
+local Kernel = require("./kernel")
 local compile_lua = require("@yueliang")
-local createInput = require("./input")
+local createInput = require("../modules/luau_term/example/input")
 
 local font = (script:WaitForChild("GetFont") :: RemoteFunction):InvokeServer()
 
