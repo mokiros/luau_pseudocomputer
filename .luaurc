@@ -10,7 +10,7 @@
 	],
 	"aliases": {
 		"luau_term": "./modules/luau_term/src",
-		"fione": "./modules/fione",
+		"fione": "./modules/fione/src",
 		"yueliang": "./modules/yueliang/src"
 	}
 }
