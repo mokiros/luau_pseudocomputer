@@ -34,6 +34,7 @@
 		// 	"rule": "rename_variables",
 		// 	"include_functions": true,
 		// },
+		// "remove_function_call_parens",
 
 		// strip luau features
 		"remove_types",
