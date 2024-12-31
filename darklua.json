@@ -43,5 +43,10 @@
 		"remove_if_expression",
 		"remove_floor_division",
 		"remove_compound_assignment",
+		{
+			"rule": "append_text_comment",
+			"file": "./LICENSE_SHORT",
+			"location": "start"
+		},
 	],
 }
