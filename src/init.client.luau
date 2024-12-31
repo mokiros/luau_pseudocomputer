@@ -4,9 +4,9 @@ local createInput = require("../modules/luau_term/example/input")
 
 local font = (script:WaitForChild("GetFont") :: RemoteFunction):InvokeServer()
 
-local kernel = Kernel.create({
-	screen_width = 80 * 8,
-	screen_height = 40 * 16,
+local kernel = Kernel.new({
+	screen_width = 640,
+	screen_height = 480,
 	font_data = font,
 })
 
@@ -88,14 +88,14 @@ local example_hello = compile_lua(
 
 local function print(str)
 	local buf = buffer.fromstring(str)
-	write(buf, buffer.len(buf))
+	write(2, buf, buffer.len(buf))
 end
 
 local buf = buffer.create(1)
 local function scanline()
 	local str = ""
 	while true do
-		local read_amount = read(buf, 1)
+		local read_amount = read(1, buf, 1)
 		if read_amount <= 0 then
 			return nil
 		end
@@ -134,9 +134,9 @@ return 0
 	"hello.lua"
 )
 
-Kernel.init(kernel, example_hello)
+Kernel.spawn(kernel, example_hello)
 
-while not Kernel.runLoop(kernel) do
+while Kernel.step(kernel) do
 	render()
 	task.wait()
 end
